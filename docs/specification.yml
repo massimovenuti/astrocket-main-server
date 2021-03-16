@@ -1,31 +1,79 @@
 openapi: '3.0.2'
 info:
-  title: Main server
-  description: API pour le référencement des game server pour le projet Asteroids Warrior
+  title: Main Server
+  description: API pour la gestion des actions liées à la gestion des Game Servers
   version: '1.0'
 servers:
-  - url: https://mainserver.aw.alexandre-vogel.fr/
+  - url: https://main.aw.alexandre-vogel.fr/
+
 
 tags:
-  - name: Liste
-    description: Action liées à l'obtention des serveurs de jeu
-  - name: Status
+  - name: Serveurs
+    description: Ensemble des fonctions liées aux serveurs
 
 paths:
+  /addGS:
+    post:
+      tags: 
+        - Serveurs
+      summary: Permet l'ajout d'un nouveau serveur de jeu
+      description: Ajout d'un nouveau serveur de jeu
+      parameters:
+        - in: header
+          name: userToken
+          schema:
+            type: string
+          required: true
+          description: Token pour identifier l'utilisateur
+      requestBody:
+        content:
+          json:
+            schema:
+              required:
+                - name
+                - address
+                - port
+              properties:
+                name:
+                  type: string
+                  example: ServerName
+                  description: Nom unique du serveur
+                address:
+                  type: string
+                  example: 127.0.0.1
+                  description: Adresse IP du serveur
+                port:
+                  type: number
+                  example: 3030
+                  description: Port du serveur
+      responses:
+        '200':
+          description: Un nouveau serveur a bien été créé
+        '401':
+          description: L'utilisateur n'a pas les droits
+        '402':
+          description: Port déjà utilisé
+        '403':
+          description: Nom du serveur déjà existant
+        '404':
+          description: Paramètre(s) manquant(s) ou invalide(s)
+        '500':
+          description: Erreur interne au serveur
+
   /list:
     get:
       tags:
-        - Liste
-      summary: Récupère la liste des games server avec leurs informations
-      description: Récupère la liste des games server avec leurs informations
+        - Serveurs
+      summary: Récupère la liste des Game Servers avec leurs informations
+      description: Récupère la liste des Game Servers avec leurs informations
       responses:
         '200':
-          description: L'ensemble des games server a été récupéré
+          description: L'ensemble des Game Servers a été récupéré
           content:
             json:
               schema:
                 type: array
-                description: Liste des games server contenant leur nom, leur nombre de joueurs et leur ping
+                description: Liste des Game Servers contenant leur nom, leur nombre de joueurs et leur ping
                 items:
                   $ref: '#/components/schemas/server_list'
         "500":
