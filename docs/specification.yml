@@ -1,0 +1,50 @@
+openapi: '3.0.2'
+info:
+  title: Main server
+  description: API pour le référencement des game server pour le projet Asteroids Warrior
+  version: '1.0'
+servers:
+  - url: https://mainserver.aw.alexandre-vogel.fr/
+
+tags:
+  - name: Liste
+    description: Action liées à l'obtention des serveurs de jeu
+  - name: Status
+
+paths:
+  /list:
+    get:
+      tags:
+        - Liste
+      summary: Récupère la liste des games server avec leurs informations
+      description: Récupère la liste des games server avec leurs informations
+      responses:
+        '200':
+          description: L'ensemble des games server a été récupéré
+          content:
+            json:
+              schema:
+                type: array
+                description: Liste des games server contenant leur nom, leur nombre de joueurs et leur ping
+                items:
+                  $ref: '#/components/schemas/server_list'
+        "500":
+          description: Internal Server Error
+  
+components:
+  schemas:
+    server_list:
+      type: object
+      properties:
+        servername:
+          type: string
+          example: server1
+          description: Nom du serveur
+        nb_user:
+          type: number
+          example: 3
+          description: Nombre de joueur sur le serveur
+        ping:
+          type: number
+          example: 40
+          description: Temps de latence du serveur
