@@ -7,6 +7,11 @@ host, port = ('',10000)
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socket.bind((host,port))
+
+##### Listes de tuples (Name,port,adress)
+server_list = [("Orion",1024,"localhost")]
+#####
+
 print("Server is up and running ...\n")
 
 while True:
@@ -19,7 +24,15 @@ while True:
     user_token.decode("utf8")
 
 
-    # x = requests.post('https://auth.aw.alexandre-vogel.fr/', data = {'user_token' : user_token})
+    # r = requests.post('https://auth.aw.alexandre-vogel.fr/user/check', data = {'user_token' : user_token})*
+
+    # if r.status_code == 400 or r.status_code == 401
+    #    print(r.json)
+    #else
+    #    print("Valid user")
+
+
+    
 
 
 
