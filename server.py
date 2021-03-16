@@ -21,7 +21,8 @@ while True:
     print("Accept connection ...\n")
 
     user_token = conn.recv(80)
-    user_token.decode("utf8")
+    user_token = user_token.decode("utf8")
+    print("Token utilisateur : " + user_token)
 
 
     # r = requests.post('https://auth.aw.alexandre-vogel.fr/user/check', data = {'user_token' : user_token})*
