@@ -54,7 +54,7 @@ exports.listGameServer = (req, res) => {
     })
     .catch(err => {
         if (err.response && err.response.status == 401)
-            res.status(404).json("Token invalide");
+            res.status(401).json("Token invalide");
         else
             res.status(500).json("Erreur interne au serveur");
     });
