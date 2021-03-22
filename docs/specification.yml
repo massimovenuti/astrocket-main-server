@@ -101,7 +101,11 @@ components:
           type: number
           example: 3
           description: Nombre de joueur sur le serveur
-        ping:
+        address:
+          type: string
+          example: 127.4.5.8
+          description: Adresse IP du serveur
+        port:
           type: number
-          example: 40
-          description: Temps de latence du serveur
+          example: 3066
+          description: Port du serveur
