@@ -3,8 +3,8 @@ const mainCtrl = require('../controllers/main');
 
 const router = express.Router();
 
-router.post('/addGameServer', mainCtrl.addGameServer);
-router.get('/', mainCtrl.listGameServer);
-// router.delete('/', mainCtrl.deleteGameServer);
+router.post('/GameServer', mainCtrl.addGameServer);
+router.get('/list', mainCtrl.listGameServer);
+// router.delete('/GameServer', mainCtrl.deleteGameServer);
 
 module.exports = router;
