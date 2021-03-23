@@ -127,11 +127,13 @@ paths:
                     description: Nombre de joueurs à ajouter/soustraire
         responses:
           "200":
-            description: "Le nombre de joueurs a bien été modifié"
+            description: Le nombre de joueurs a bien été modifié
           "400":
-            description: "Token invalide"
+            description: Paramètre(s) manquant(s)
+          "401":
+            description: Token invalide
           "500":
-            description: "Erreur serveur interne"
+            description: Erreur serveur interne
   
   /alive:
     post:
@@ -152,13 +154,13 @@ paths:
                   description: Token pour identifier un serveur
       responses:
         "200":
-          description: "Le Main Server est toujours opérationnel"
-        '400':
+          description: Le Main Server est toujours opérationnel
+        "400":
           description: Paramètre(s) manquant(s) ou invalide(s)
         "401":
-          description: "Token invalide"
+          description: Token invalide
         "500":
-          description: "Erreur serveur interne"
+          description: Erreur serveur interne
 
   /list:
     get:
