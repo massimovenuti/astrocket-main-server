@@ -117,7 +117,7 @@ paths:
             json:
               schema:
                 type: array
-                description: Liste des Game Servers contenant leur nom, leur nombre de joueurs et leur ping
+                description: Liste des Game Servers contenant leur nom, leur nombre de joueurs, leur adresse IP et leur numéro de port
                 items:
                   $ref: '#/components/schemas/server_list'
         "401": 
