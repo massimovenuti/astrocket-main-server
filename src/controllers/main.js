@@ -69,7 +69,7 @@ exports.deleteGameServer = (req, res) => {
     })
     .catch((err) => {
         if (err.response && err.response.status == 400)
-            res.status(400).json("Paramètre(s) manquant(s) ou invalide(s)")
+            res.status(400).json("Paramètre(s) manquant(s) ou invalide(s)");
         else if (err.response && err.response.status == 401)
             res.status(401).json("Token non valide");
         else if (err.response && err.response.status == 402)
@@ -81,5 +81,24 @@ exports.deleteGameServer = (req, res) => {
     })
 }
 
-exports.aliveMainServer = (req, res) => {
+exports.updateGameServer = (req, res) => {
+    axios.post('http://localhost:8080/server/check', {token: req.headers.servToken})
+    .then((res_auth) => {
+        const idx = server_list.indexOf({name: req.body.name});
+        if (idx == -1)
+            res.status(500).json("Erreur interne serveur");
+        else {
+            server_list[idx][players] = req.body.playersNB;
+            res.status(200).json("Le nombre de joueurs a bien été modifié");
+        }
+    })
+    .catch((err) => {
+        if (err.response && err.response.status == 400)
+            res.status(400).json("Paramètre(s) manquant(s)");
+        else if (err.response && err.response.status == 401)
+            res.status(401).json("Token non valide");
+        else 
+            res.status(500).json("Erreur interne au serveur");
+    })
 }
+
