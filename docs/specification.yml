@@ -125,6 +125,44 @@ paths:
         "500":
           description: Internal Server Error
 
+  /updateGameServer:
+    put:
+      tags:
+        - Serveurs
+      summary: Modifie le nombre de joueurs sur un serveur
+      description: Permet de modifier, lors de l'arrivée ou du départ d'un joueur, le nombre de joueurs d'un serveur
+      parameters:
+        - in: header
+          name: serverToken
+          schema:
+            type: string
+            required: true
+            description: Token pour identifier un serveur
+        requestBody:
+        content:
+          json:
+            schema:
+              required:
+                - name
+                - playersNB
+              properties:
+                name:
+                  type: string
+                  example: ServerName
+                  description: Nom unique du serveur
+                playersNB:
+                  type: string
+                  example: -1 
+                  description: Nombre de joueurs à ajouter/soustraire
+      responses:
+        "200":
+          description: "Le nombre de joueurs a bien été modifié"
+        "400":
+          description: "Token invalide"
+        "500":
+          description: "Erreur serveur interne"
+
+
 components:
   schemas:
     server_list:
