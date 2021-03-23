@@ -156,9 +156,11 @@ paths:
         '400':
           description: Paramètre(s) manquant(s) ou invalide(s)
         "401":
-          description: "Token invalide"
+          description: "L'un des ServerToken est invalide"
+        "402":
+          description: "L'un des ServerToken ne se trouve pas dans server_list"
         "500":
-          description: "Erreur serveur interne"
+          description: "Erreur interne au serveur"
 
   /list:
     get:

@@ -9,7 +9,6 @@ var server_list = [{"name" : "Orion", "address" : "local", "port" : 4040, "playe
 
 
 exports.addGameServer = (req, res) => {
-
     axios.post('http://localhost:8080/user/check', { token: req.headers.user_token })
     .then((res_user) => {
         if (res_user.role != 'A'){
@@ -103,6 +102,30 @@ exports.updateGameServer = (req, res) => {
 }
 
 exports.aliveMainServer = (req, res) => {
-
+    if(!req.body){
+        res.status(400).send('Paramètre(s) manquant(s) ou invalide(s)');
+    } else {
+        var length = req.body.length;
+        var elem = req.body[getRandom(length)];
+        knex('servers').select('serverName').where({ serverToken: elem })
+            .then((res) => {
+                if(res[0]) {
+                    const exists = 0;
+                    server_list.foreach(elem => {
+                        if (elem['name'] == res[0].serverName)
+                            exists = 1;
+                    })
+                    if(exists){
+                        res.status(200).send('Le Main Server est toujours opérationnel');
+                    } else {
+                        res.status(402).send('L\'un des ServerToken ne se trouve pas dans server_list');
+                    }
+                } else {
+                    res.status(401).send('L\'un des ServerToken est invalide');
+                }
+            })
+            .catch((err) => {
+                res.status(500).json("Erreur interne au serveur");
+            });    
+    }
 }
-
