@@ -81,3 +81,5 @@ exports.deleteGameServer = (req, res) => {
     })
 }
 
+exports.aliveMainServer = (req, res) => {
+}

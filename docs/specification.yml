@@ -96,39 +96,66 @@ paths:
           description: Le serveur n'existe pas
         '500':
           description: Erreur interne au serveur
-
-  put:
-      tags:
-        - Serveurs
-      summary: Modifie le nombre de joueurs sur un serveur
-      description: Permet de modifier, lors de l'arrivée ou du départ d'un joueur, le nombre de joueurs d'un serveur
-      parameters:
-        - in: header
-          name: serverToken
-          schema:
-            type: string
+          
+    put:
+        tags:
+          - Serveurs
+        summary: Modifie le nombre de joueurs sur un serveur
+        description: Permet de modifier, lors de l'arrivée ou du départ d'un joueur, le nombre de joueurs d'un serveur
+        parameters:
+          - in: header
+            name: serverToken
+            schema:
+              type: string
             required: true
             description: Token pour identifier un serveur
         requestBody:
+          content:
+            json:
+              schema:
+                required:
+                  - name
+                  - playersNB
+                properties:
+                  name:
+                    type: string
+                    example: ServerName
+                    description: Nom unique du serveur
+                  playersNB:
+                    type: string
+                    example: -1 
+                    description: Nombre de joueurs à ajouter/soustraire
+        responses:
+          "200":
+            description: "Le nombre de joueurs a bien été modifié"
+          "400":
+            description: "Token invalide"
+          "500":
+            description: "Erreur serveur interne"
+  
+  /alive:
+    post:
+      tags:
+        - Serveurs
+      summary: Vérifie que le Main Server est toujours vivant
+      description: Reçoie une liste de tokens et vérifie qu'il s'agit bien d'un serverToken valide
+      requestBody:
         content:
           json:
             schema:
-              required:
-                - name
-                - playersNB
+              type: array
+              description: Liste de tokens des Games Servers vivants
               properties:
-                name:
+                serverToken:
                   type: string
-                  example: ServerName
-                  description: Nom unique du serveur
-                playersNB:
-                  type: string
-                  example: -1 
-                  description: Nombre de joueurs à ajouter/soustraire
+                  example: 7dea256198bb51e501ee2d18da735a006e85ef00d6fde30dbd4c141490db9dc8
+                  description: Token pour identifier un serveur
       responses:
         "200":
-          description: "Le nombre de joueurs a bien été modifié"
-        "400":
+          description: "Le Main Server est toujours opérationnel"
+        '400':
+          description: Paramètre(s) manquant(s) ou invalide(s)
+        "401":
           description: "Token invalide"
         "500":
           description: "Erreur serveur interne"
@@ -182,3 +209,4 @@ components:
           type: number
           example: 3066
           description: Port du serveur
+
