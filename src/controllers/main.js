@@ -15,27 +15,26 @@ exports.addGameServer = (req, res) => {
         if (res_user.role != 'A'){
             res.status(401).json("L'utilisateur n'a pas les droits")
         } else {
-            axios.post('http://localhost:8080/server/add', { token: req.headers.user_token, name: req.body.name })
-            .then((res_server) => {
-                const exists = 0;
-                server_list.foreach(elem => {
-                    if (elem['port'] == req.body.port)
-                        exists = 1;
-                    })
-
-                if (exists){
-                    res.status(402).json("Port déjà utilisé");
-                } else{
+            const exists = 0;
+            server_list.foreach(elem => {
+                if (elem['port'] == req.body.port)
+                    exists = 1;
+            })
+            if (exists){
+                res.status(402).json("Port déjà utilisé");
+            } else{
+                axios.post('http://localhost:8080/server/add', { token: req.headers.user_token, name: req.body.name })
+                .then((res_server) => {
                     server_list.push({"name" : req.body.name, "address":req.body.address ,"port": req.body.port,"players": 0});
                     res.status(200).json("Un nouveau serveur a bien été créé");
-                }
-            })
-            .catch(err => {
-                if (err.response && (err.response.status == 400 || err.response.status == 401))
-                    res.status(404).json("Paramètre(s) manquant(s) ou invalide(s)");
-                else
-                    res.status(403).json("Nom du serveur déjà existant")
-            })
+                })
+                .catch(err => {
+                    if (err.response && (err.response.status == 400 || err.response.status == 401))
+                        res.status(404).json("Paramètre(s) manquant(s) ou invalide(s)");
+                    else
+                        res.status(403).json("Nom du serveur déjà existant")
+                })
+            }
         }
     })
     .catch(err => {
