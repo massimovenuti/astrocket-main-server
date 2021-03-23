@@ -6,5 +6,6 @@ const router = express.Router();
 router.post('/GameServer', mainCtrl.addGameServer);
 router.get('/list', mainCtrl.listGameServer);
 router.delete('/GameServer', mainCtrl.deleteGameServer);
+router.put('/GameServer', mainCtrl.updateGameServer);
 
 module.exports = router;
