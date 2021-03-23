@@ -48,7 +48,7 @@ exports.addGameServer = (req, res) => {
 
 
 exports.listGameServer = (req, res) => {
-    axios.post('http://localhost:8080/user/check', { token: req.headers.user_token })
+    axios.post('http://localhost:8080/user/check', { token: req.headers.userToken })
     .then((res_auth) => {
         res.status(200).json(server_list);
     })
@@ -60,8 +60,25 @@ exports.listGameServer = (req, res) => {
     });
 }
 
-/*
-exports.deleteGameServer = (req, res) => {
 
+exports.deleteGameServer = (req, res) => {
+    axios.post('http://localhost:8080/server/remove', {name: req.body.name, token: req.headers.userToken})
+    .then((res_auth) => {
+        const idx = server_list.indexOf(req.body.name);
+        server_list.splice(idx);
+        res.status(200).json("Le serveur a bien été supprimé");
+    })
+    .catch((err) => {
+        if (err.response && err.response.status == 400)
+            res.status(400).json("Paramètre(s) manquant(s) ou invalide(s)")
+        else if (err.response && err.response.status == 401)
+            res.status(401).json("Token non valide");
+        else if (err.response && err.response.status == 402)
+            res.status(402).json("L'utilisateur n'a pas les droits");
+        else if (err.response && err.response.status == 403)
+            res.status(403).json("Le serveur n'existe pas");
+        else 
+            res.status(500).json("Erreur interne au serveur");
+    })
 }
-*/
+
