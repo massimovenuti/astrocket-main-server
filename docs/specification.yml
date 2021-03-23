@@ -97,36 +97,7 @@ paths:
         '500':
           description: Erreur interne au serveur
 
-  /list:
-    get:
-      tags:
-        - Serveurs
-      summary: Récupère la liste des Game Servers avec leurs informations
-      description: Récupère la liste des Game Servers avec leurs informations
-      parameters:
-        - in: header
-          name: userToken
-          schema:
-            type: string
-          required: true
-          description: Token pour identifier l'utilisateur
-      responses:
-        "200":
-          description: L'ensemble des Game Servers a été récupéré
-          content:
-            json:
-              schema:
-                type: array
-                description: Liste des Game Servers contenant leur nom, leur nombre de joueurs, leur adresse IP et leur numéro de port
-                items:
-                  $ref: '#/components/schemas/server_list'
-        "401": 
-          description: Token invalide
-        "500":
-          description: Internal Server Error
-
-  /updateGameServer:
-    put:
+  put:
       tags:
         - Serveurs
       summary: Modifie le nombre de joueurs sur un serveur
@@ -162,7 +133,34 @@ paths:
         "500":
           description: "Erreur serveur interne"
 
-
+  /list:
+    get:
+      tags:
+        - Serveurs
+      summary: Récupère la liste des Game Servers avec leurs informations
+      description: Récupère la liste des Game Servers avec leurs informations
+      parameters:
+        - in: header
+          name: userToken
+          schema:
+            type: string
+          required: true
+          description: Token pour identifier l'utilisateur
+      responses:
+        "200":
+          description: L'ensemble des Game Servers a été récupéré
+          content:
+            json:
+              schema:
+                type: array
+                description: Liste des Game Servers contenant leur nom, leur nombre de joueurs, leur adresse IP et leur numéro de port
+                items:
+                  $ref: '#/components/schemas/server_list'
+        "401": 
+          description: Token invalide
+        "500":
+          description: Internal Server Error
+    
 components:
   schemas:
     server_list:
