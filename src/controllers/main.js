@@ -85,7 +85,7 @@ exports.updateGameServer = (req, res) => {
     .then((res_auth) => {
         const idx = server_list.indexOf({name: req.body.name});
         if (idx == -1)
-            res.status(500).json("Erreur interne serveur");
+            res.status(402).json("Le serveur n'existe pas");
         else {
             server_list[idx][players] = req.body.playersNB;
             res.status(200).json("Le nombre de joueurs a bien été modifié");
