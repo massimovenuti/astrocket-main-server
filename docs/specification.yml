@@ -124,7 +124,7 @@ paths:
                   playersNB:
                     type: string
                     example: -1 
-                    description: Nombre de joueurs à ajouter/soustraire
+                    description: Nombre de joueurs du serveur
         responses:
           "200":
             description: Le nombre de joueurs a bien été modifié
@@ -132,6 +132,10 @@ paths:
             description: Paramètre(s) manquant(s)
           "401":
             description: Token invalide
+          "402":
+            description: Le serveur n'existe pas
+          "403":
+            description: Le nombre entré est invalide
           "500":
             description: Erreur serveur interne
   
