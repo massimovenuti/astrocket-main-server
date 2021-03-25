@@ -158,9 +158,7 @@ paths:
         "400":
           description: Paramètre(s) manquant(s) ou invalide(s)
         "401":
-          description: Token invalide
-        "500":
-          description: Erreur serveur interne
+
 
   /list:
     get:
