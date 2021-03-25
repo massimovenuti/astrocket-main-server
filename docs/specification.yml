@@ -157,7 +157,12 @@ paths:
           description: Le Main Server est toujours opérationnel
         "400":
           description: Paramètre(s) manquant(s) ou invalide(s)
-        "401":
+	"401":
+          description: "L'un des ServerToken est invalide"
+        "402":
+          description: "L'un des ServerToken ne se trouve pas dans server_list"
+        "500":
+          description: "Erreur interne au serveur"
 
 
   /list:
