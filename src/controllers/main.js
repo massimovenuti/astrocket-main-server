@@ -1,7 +1,8 @@
 const  http  = require('http');
 const {all} = require('../app');
 const axios = require('axios');
-const  dotenv  = require('dotenv')
+const  dotenv  = require('dotenv');
+const ipRegex = require('ip-regex');
 dotenv.config()
 
 var server_list = [{"name" : "Orion", "address" : "local", "port" : 4040, "players" : 10}];
@@ -19,6 +20,13 @@ exports.addGameServer = (req, res) => {
                 if (elem['port'] == req.body.port)
                     exists = 1;
             })
+            if (!ipRegex.test(req.body.address))
+                res.status(404).json("Paramètre(s) manquant(s) ou invalide(s)");
+
+            const num_regex = new RegExp('\\[0-9]{4}');
+            if (!req.body.port.match(num_regex))
+                res.status(404).json("Paramètre(s) manquant(s) ou invalide(s)");
+
             if (exists){
                 res.status(402).json("Port déjà utilisé");
             } else{
