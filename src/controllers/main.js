@@ -54,7 +54,7 @@ exports.addGameServer = (req, res) => {
 
 
 exports.listGameServer = (req, res) => {
-    axios.post('http://localhost:8080/user/check', { token: req.headers.userToken })
+    axios.post('http://localhost:8080/user/check', { token: req.headers.user_token })
     .then((res_auth) => {
         res.status(200).json(server_list);
     })
@@ -70,7 +70,7 @@ exports.listGameServer = (req, res) => {
 
 
 exports.deleteGameServer = (req, res) => {
-    axios.post('http://localhost:8080/server/remove', {name: req.body.name, token: req.headers.userToken})
+    axios.post('http://localhost:8080/server/remove', {name: req.body.name, token: req.headers.user_token})
     .then((res_auth) => {
         const idx = server_list.indexOf(req.body.name);
         server_list.splice(idx);
@@ -91,7 +91,7 @@ exports.deleteGameServer = (req, res) => {
 }
 
 exports.updateGameServer = (req, res) => {
-    axios.post('http://localhost:8080/server/check', {token: req.headers.servToken})
+    axios.post('http://localhost:8080/server/check', {token: req.headers.server_token})
     .then((res_auth) => {
         const idx = server_list.indexOf({name: req.body.name});
         if (idx == -1)
@@ -113,18 +113,16 @@ exports.updateGameServer = (req, res) => {
 
 exports.aliveMainServer = (req, res) => {
     var length = req.body.length;
-    var elem = req.body[getRandom(length)];
-    axios.post('http://localhost:8080/server/check', {token: elem})
-    .then((res) => {
-        const exists = 0;
-        server_list.foreach(elem => {
-            if (elem['name'] == res[0].serverName)
-                exists = 1;
-        })
-        if(exists)
-            res.status(200).send('Le Main Server est toujours opérationnel');
-        else
+    var elem = req.body[Math.floor(Math.random() * (length-1))];
+    axios.post('http://localhost:8080/server/check', {token: elem.serverToken})
+    .then((res_auth) => {
+        // à vérifier
+        const idx = server_list.indexOf({name: res_auth.data.name});
+        console.log(res_auth.data.name);
+        if(idx == -1)
             res.status(402).send('L\'un des ServerToken ne se trouve pas dans server_list');
+        else
+            res.status(200).send('Le Main Server est toujours opérationnel');
     })
     .catch((err) => {
         if (err.response && err.response.status == 400)
