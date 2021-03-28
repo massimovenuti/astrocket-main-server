@@ -150,24 +150,20 @@ paths:
           json:
             schema:
               type: array
-              description: Liste de tokens des Games Servers vivants
-              properties:
-                serverToken:
-                  type: string
-                  example: 7dea256198bb51e501ee2d18da735a006e85ef00d6fde30dbd4c141490db9dc8
-                  description: Token pour identifier un serveur
+              description: Liste e tokens des Games Servers vivants
+              items:
+                $ref: '#/components/schemas/aliveGameServer'
       responses:
         "200":
           description: Le Main Server est toujours opérationnel
         "400":
           description: Paramètre(s) manquant(s) ou invalide(s)
-	"401":
+        "401":
           description: "L'un des ServerToken est invalide"
         "402":
           description: "L'un des ServerToken ne se trouve pas dans server_list"
         "500":
           description: "Erreur interne au serveur"
-
 
   /list:
     get:
@@ -189,9 +185,11 @@ paths:
             json:
               schema:
                 type: array
-                description: Liste des Game Servers contenant leur nom, leur nombre de joueurs, leur adresse IP et leur numéro de port
+                description: Liste des Game Servers contenant leur nom, leur adresse IP, leur numéro de port et leur nombre de joueurs
                 items:
                   $ref: '#/components/schemas/server_list'
+        "400":
+          description: Paramètre(s) manquant(s) ou invalide(s)
         "401": 
           description: Token invalide
         "500":
@@ -202,14 +200,10 @@ components:
     server_list:
       type: object
       properties:
-        servername:
+        name:
           type: string
           example: server1
           description: Nom du serveur
-        nb_user:
-          type: number
-          example: 3
-          description: Nombre de joueur sur le serveur
         address:
           type: string
           example: 127.4.5.8
@@ -218,4 +212,16 @@ components:
           type: number
           example: 3066
           description: Port du serveur
+        players:
+          type: number
+          example: 3
+          description: Nombre de joueur sur le serveur
 
+
+    aliveGameServer:
+      type: object
+      properties:
+        serverToken:
+          type: string
+          example: 7dea256198bb51e501ee2d18da735a006e85ef00d6fde30dbd4c141490db9dc8
+          description: Token pour identifier un serveur
