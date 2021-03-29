@@ -91,6 +91,7 @@ exports.deleteGameServer = (req, res) => {
 }
 
 exports.updateGameServer = (req, res) => {
+    console.log(req.headers.server_token);
     axios.post('http://localhost:8080/server/check', {token: req.headers.server_token})
     .then((res_auth) => {
         const idx = server_list.indexOf({name: req.body.name});
@@ -102,6 +103,7 @@ exports.updateGameServer = (req, res) => {
         }
     })
     .catch((err) => {
+        console.log(err);
         if (err.response && err.response.status == 400)
             res.status(400).json("Paramètre(s) manquant(s)");
         else if (err.response && err.response.status == 401)
