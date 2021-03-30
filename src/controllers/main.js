@@ -84,7 +84,7 @@ exports.listGameServer = (req, res) => {
 exports.deleteGameServer = (req, res) => {
     axios.post('http://localhost:8080/server/remove', {name: req.body.name, token: req.headers.user_token})
     .then((res_auth) => {
-        const idx = server_list.indexOf(req.body.name);
+        const idx = index_research(server_list,req.body.name);;
         server_list.splice(idx);
         res.status(200).json("Le serveur a bien été supprimé");
     })
@@ -131,7 +131,7 @@ exports.aliveMainServer = (req, res) => {
     axios.post('http://localhost:8080/server/check', {token: elem.serverToken})
     .then((res_auth) => {
         // à vérifier
-        const idx = server_list.indexOf({name: res_auth.data.name});
+        const idx = index_research(server_list,res_auth.data.name);
         console.log(res_auth.data.name);
         if(idx == -1)
             res.status(402).send('L\'un des ServerToken ne se trouve pas dans server_list');
