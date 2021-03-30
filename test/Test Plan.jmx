@@ -1941,7 +1941,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -1983,7 +1983,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -1996,7 +1996,7 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">[&#xd;
   {&#xd;
-    &quot;serverToken&quot;: &quot;servAndromède&quot;&#xd;
+    &quot;serverToken&quot;: &quot;d03b1bf310218e16baa49f19bcd991c5866fd9fea8f454d8aab12367fb176ac289f844214e60f5c475a49eaaac344ef3d40b1713a32254975c326fa84a492cf39b252c8fa9ba661e66a97d&quot;&#xd;
   }&#xd;
 ]</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -2025,7 +2025,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
