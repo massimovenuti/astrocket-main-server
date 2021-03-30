@@ -124,7 +124,7 @@ exports.updateGameServer = (req, res) => {
             if (typeof(playersNB) != "number")
                 res.status(405).json("Nombre de joueurs invalide");
 
-            server_list[idx].players += req.body.playersNB;
+            server_list[idx].players = req.body.playersNB;
             res.status(200).json("Le nombre de joueurs a bien été modifié");
         }
     })
