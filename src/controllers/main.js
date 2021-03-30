@@ -125,24 +125,24 @@ exports.updateGameServer = (req, res) => {
 }
 
 exports.aliveMainServer = (req, res) => {
-    var length = req.body.length;
-    var elem = req.body[Math.floor(Math.random() * (length-1))];
-    axios.post('http://localhost:8080/server/check', {token: elem.serverToken})
-    .then((res_auth) => {
-        // à vérifier
-        const idx = index_research(server_list,res_auth.data.name);
-        console.log(res_auth.data.name);
-        if(idx == -1)
-            res.status(402).send('L\'un des ServerToken ne se trouve pas dans server_list');
-        else
-            res.status(200).send('Le Main Server est toujours opérationnel');
-    })
-    .catch((err) => {
-        if (err.response && err.response.status == 400)
-            res.status(400).send('Paramètre(s) manquant(s) ou invalide(s)');
-        else if (err.response && err.response.status == 401)
-            res.status(401).send('L\'un des ServerToken est invalide');
-        else
-            res.status(500).json("Erreur interne au serveur");
-    });
+    if(!req.body[0]){
+        res.status(400).send('Paramètre(s) manquant(s) ou invalide(s)');
+    } else {
+        var length = req.body.length;
+        var elem = req.body[Math.floor(Math.random() * (length-1))];
+        axios.post('http://localhost:8080/server/check', {token: elem.serverToken})
+        .then((res_auth) => {
+            const idx = index_research(server_list,res_auth.data.name);
+            if(idx == -1)
+                res.status(402).send('L\'un des ServerToken ne se trouve pas dans server_list');
+            else
+                res.status(200).send('Le Main Server est toujours opérationnel');
+        })
+        .catch((err) => {
+            if (err.response && err.response.status == 401)
+                res.status(401).send('L\'un des ServerToken est invalide');
+            else
+                res.status(500).json("Erreur interne au serveur");
+        });
+    }
 }
