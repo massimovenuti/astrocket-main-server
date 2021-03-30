@@ -111,7 +111,6 @@ exports.updateGameServer = (req, res) => {
         else {
             server_list[idx].players += req.body.playersNB;
             res.status(200).json("Le nombre de joueurs a bien été modifié");
-            console.log(server_list);
         }
     })
     .catch((err) => {

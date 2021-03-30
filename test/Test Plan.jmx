@@ -33,8 +33,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;:$nameValid,&#xd;
-	&quot;playersNB&quot;: $nbValid&#xd;
+	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;playersNB&quot;: &quot;${nbValid}&quot;&#xd;
 }&#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -45,7 +45,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">PUT</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -120,7 +120,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;:$nameValid&#xd;
+	&quot;name&quot;: &quot;${nameValid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -130,7 +130,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">PUT</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -205,7 +205,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;playersNB&quot;: $nbValid&#xd;
+	&quot;playersNB&quot;: &quot;${nbValid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -215,7 +215,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">PUT</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -290,8 +290,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;:$nameValid,&#xd;
-	&quot;playersNB&quot;: $nbValid&#xd;
+	&quot;name&quot;:&quot;${nameValid}&quot;,&#xd;
+	&quot;playersNB&quot;: &quot;${nbValid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -301,7 +301,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">PUT</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -374,8 +374,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;:$nameInvalid,&#xd;
-	&quot;playersNB&quot;: $nbValid&#xd;
+	&quot;name&quot;: &quot;${nameInvalid}&quot;,&#xd;
+	&quot;playersNB&quot;: &quot;${nbValid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -385,7 +385,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">PUT</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -460,8 +460,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;:$nameInvalid,&#xd;
-	&quot;playersNB&quot;: $nbInvalid&#xd;
+	&quot;name&quot;: &quot;${nameInvalid}&quot;,&#xd;
+	&quot;playersNB&quot;: &quot;${nbInvalid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -471,7 +471,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">PUT</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -561,9 +561,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: &quot;Orion&quot;,&#xd;
-	&quot;address&quot;: 127.0.0.1,&#xd;
-	&quot;port&quot; 4041&#xd;
+	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
+	&quot;port&quot; &quot;${portValid}&quot;&#xd;
 }&#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -574,7 +574,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -649,9 +649,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: $nameValid,&#xd;
-	&quot;address&quot;: $addrValid,&#xd;
-	&quot;port&quot; &amp;portValid&#xd;
+	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
+	&quot;port&quot; &quot;${portValid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -661,7 +661,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -736,8 +736,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;address&quot;: $addrValid,&#xd;
-	&quot;port&quot; &amp;portValid&#xd;
+	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
+	&quot;port&quot; &quot;${portValid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -747,7 +747,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -822,9 +822,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: $nameValid,&#xd;
-	&quot;address&quot;: $addrValid,&#xd;
-	&quot;port&quot; &amp;portValid&#xd;
+	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
+	&quot;port&quot; &quot;${portValid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -834,7 +834,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -909,9 +909,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: $nameValid,&#xd;
-	&quot;address&quot;: $addrValid,&#xd;
-	&quot;port&quot; &amp;portAUse&#xd;
+	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
+	&quot;port&quot; &quot;${portAUse}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -921,7 +921,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -996,8 +996,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: $nameValid,&#xd;
-	&quot;address&quot;: $addrValid&#xd;
+	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;address&quot;: &quot;${addrValid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -1007,7 +1007,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1082,8 +1082,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: $nameValid,&#xd;
-	&quot;port&quot; &amp;portValid&#xd;
+	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;port&quot; &quot;${portValid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -1093,7 +1093,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1168,9 +1168,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: $nameValid,&#xd;
-	&quot;address&quot;: $addrValid,&#xd;
-	&quot;port&quot; &amp;portInvalid&#xd;
+	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
+	&quot;port&quot; &quot;${portInvalid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -1180,7 +1180,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1255,9 +1255,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: $nameValid,&#xd;
-	&quot;address&quot;: $addrInvalid,&#xd;
-	&quot;port&quot; &amp;portValid&#xd;
+	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;address&quot;: &quot;${addrInvalid}&quot;,&#xd;
+	&quot;port&quot; &quot;${portValid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -1267,7 +1267,7 @@
           <stringProp name="HTTPSampler.port">3500</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/GameServer</stringProp>
+          <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2082,7 +2082,7 @@
           </elementProp>
           <elementProp name="portValid" elementType="Argument">
             <stringProp name="Argument.name">portValid</stringProp>
-            <stringProp name="Argument.value">4041</stringProp>
+            <stringProp name="Argument.value">4050</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="portAUse" elementType="Argument">
