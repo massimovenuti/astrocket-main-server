@@ -29,6 +29,7 @@ function port_research(server_list,port)
     return -1;
 }
 
+console.log(server_list);
 
 exports.addGameServer = (req, res) => {
     axios.post('http://localhost:8080/user/check', { token: req.headers.user_token })
@@ -50,7 +51,6 @@ exports.addGameServer = (req, res) => {
                 .then((res_server) => {
                     server_list.push({"name" : req.body.name, "address":req.body.address ,"port": req.body.port,"players": 0});
                     res.status(200).json("Un nouveau serveur a bien été créé");
-                    console.log(server_list);
                 })
                 .catch(err => {
                     console.log(err);
@@ -110,7 +110,7 @@ exports.deleteGameServer = (req, res) => {
 }
 
 exports.updateGameServer = (req, res) => {
-    axios.post('http://localhost:8080/server/check', {token: req.headers.server_token})
+    axios.post('http://localhost:8080/server/check', {token: req.headers.token})
     .then((res_auth) => {
         const idx = index_research(server_list,req.body.name);
         if (idx == -1)
@@ -121,7 +121,6 @@ exports.updateGameServer = (req, res) => {
         }
     })
     .catch((err) => {
-        console.log(err);
         if (err.response && err.response.status == 400)
             res.status(400).json("Paramètre(s) manquant(s)");
         else if (err.response && err.response.status == 401)
