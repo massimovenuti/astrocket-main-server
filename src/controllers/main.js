@@ -5,8 +5,20 @@ const  dotenv  = require('dotenv');
 const ipRegex = require('ip-regex');
 dotenv.config()
 
-var server_list = [{"name" : "Orion", "address" : "local", "port" : 4040, "players" : 10}];
+var server_list = [{"name" : "Orion", "address" : "localhost", "port" : 4040, "players" : 10},
+                   {"name" : "Andromède", "address" : "localhost", "port" : 4041, "players" : 2},
+                   {"name" : "Pégase", "address" : "localhost", "port" : 4042, "players" : 5}
+                  ];
 
+
+function index_research(server_list,name)
+{
+    for (i = 0;i<server_list.length;i++)
+        if (server_list[i].name == name)
+            return i;
+
+    return -1;
+}
 
 
 exports.addGameServer = (req, res) => {
@@ -91,15 +103,15 @@ exports.deleteGameServer = (req, res) => {
 }
 
 exports.updateGameServer = (req, res) => {
-    console.log(req.headers.server_token);
     axios.post('http://localhost:8080/server/check', {token: req.headers.server_token})
     .then((res_auth) => {
-        const idx = server_list.indexOf({name: req.body.name});
+        const idx = index_research(server_list,req.body.name);
         if (idx == -1)
             res.status(402).json("Le serveur n'existe pas");
         else {
-            server_list[idx][players] = req.body.playersNB;
+            server_list[idx].players += req.body.playersNB;
             res.status(200).json("Le nombre de joueurs a bien été modifié");
+            console.log(server_list);
         }
     })
     .catch((err) => {
