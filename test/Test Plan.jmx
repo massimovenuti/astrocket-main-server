@@ -665,7 +665,6 @@
             <stringProp name="filename"></stringProp>
           </ResultCollector>
           <hashTree/>
-<<<<<<< HEAD
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
@@ -679,8 +678,6 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-=======
->>>>>>> de1d8c20e5b1e8b0f4cd3596e455f7a28cb51b0b
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Token invalide" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -712,20 +709,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
-<<<<<<< HEAD
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 404" enabled="true">
-=======
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-            <collectionProp name="HeaderManager.headers">
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">user_token</stringProp>
-                <stringProp name="Header.value">user1</stringProp>
-              </elementProp>
-            </collectionProp>
-          </HeaderManager>
-          <hashTree/>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 200" enabled="true">
->>>>>>> de1d8c20e5b1e8b0f4cd3596e455f7a28cb51b0b
             <collectionProp name="Asserion.test_strings">
               <stringProp name="51512">404</stringProp>
             </collectionProp>
