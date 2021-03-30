@@ -56,7 +56,11 @@ paths:
         '403':
           description: Nom du serveur déjà existant
         '404':
-          description: Paramètre(s) manquant(s) ou invalide(s)
+          description: Token manquant ou invalide
+        '405':
+          description: Addresse invalide
+        '406':
+          description: Port invalide
         '500':
           description: Erreur interne au serveur
           
@@ -135,7 +139,11 @@ paths:
           "402":
             description: Le serveur n'existe pas
           "403":
-            description: Le nombre entré est invalide
+            description: Nom manquant
+          "404":
+            description: Nombre de joueurs manquant
+          "405":
+            description: Nombre de joueurs valide
           "500":
             description: Erreur serveur interne
   

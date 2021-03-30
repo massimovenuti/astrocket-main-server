@@ -39,10 +39,10 @@ exports.addGameServer = (req, res) => {
         } else {
             
             if (!ipRegex().test(req.body.address))
-                res.status(404).json("Addresse invalide");
+                res.status(405).json("Addresse invalide");
 
             if (typeof(req.body.port) != "number")
-                res.status(404).json("Port invalide");
+                res.status(406).json("Port invalide");
 
             if ((port_research(server_list,req.body.port) != -1)){
                 res.status(402).json("Port déjà utilisé");
@@ -110,20 +110,27 @@ exports.deleteGameServer = (req, res) => {
 }
 
 exports.updateGameServer = (req, res) => {
+    if (req.body.name == undefined)
+        res.status(403).json("Nom manquant");
+
+    if (req.body.playersNB == undefined)
+        res.status(404).json("Nombre de joueurs manquant");
+
     axios.post('http://localhost:8080/server/check', {token: req.headers.token})
     .then((res_auth) => {
         const idx = index_research(server_list,req.body.name);
         if (idx == -1)
             res.status(402).json("Le serveur n'existe pas");
         else {
+            if (typeof(playersNB) != "number")
+                res.status(405).json("Nombre de joueurs invalide");
+
             server_list[idx].players += req.body.playersNB;
             res.status(200).json("Le nombre de joueurs a bien été modifié");
         }
     })
     .catch((err) => {
-        if (err.response && err.response.status == 400)
-            res.status(400).json("Paramètre(s) manquant(s)");
-        else if (err.response && err.response.status == 401)
+        if (err.response && err.response.status == 401)
             res.status(401).json("Token non valide");
         else 
             res.status(500).json("Erreur interne au serveur");
