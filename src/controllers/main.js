@@ -53,9 +53,8 @@ exports.addGameServer = (req, res) => {
                     res.status(200).json("Un nouveau serveur a bien été créé");
                 })
                 .catch(err => {
-                    console.log(err);
                     if (err.response && (err.response.status == 400 || err.response.status == 401))
-                        res.status(404).json("Paramètre(s) manquant(s) ou invalide(s)");
+                        res.status(404).json("Paramètre(s) manquant(s)");
                     else
                         res.status(403).json("Nom du serveur déjà existant")
                 })
