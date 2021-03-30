@@ -121,7 +121,7 @@ exports.updateGameServer = (req, res) => {
         if (idx == -1)
             res.status(402).json("Le serveur n'existe pas");
         else {
-            if (typeof(playersNB) != "number")
+            if (typeof(req.body.playersNB) != "number")
                 res.status(405).json("Nombre de joueurs invalide");
 
             server_list[idx].players = req.body.playersNB;
