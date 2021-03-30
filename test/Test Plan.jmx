@@ -1881,7 +1881,7 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">[&#xd;
   {&#xd;
-    &quot;serverToken&quot;: &quot;servOrion&quot;&#xd;
+    &quot;serverToken&quot;: &quot;${stokenValid}&quot;&#xd;
   }&#xd;
 ]</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1954,7 +1954,7 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">[&#xd;
   {&#xd;
-    &quot;serverToken&quot;: &quot;tokenInvalid&quot;&#xd;
+    &quot;serverToken&quot;: &quot;${stokenInvalid}&quot;&#xd;
   }&#xd;
 ]</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1996,7 +1996,7 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">[&#xd;
   {&#xd;
-    &quot;serverToken&quot;: &quot;servAndromède&quot;&#xd;
+    &quot;serverToken&quot;: &quot;${stokenInvalid}&quot;&#xd;
   }&#xd;
 ]</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -2108,6 +2108,16 @@
           <elementProp name="nbInvalid" elementType="Argument">
             <stringProp name="Argument.name">nbInvalid</stringProp>
             <stringProp name="Argument.value">nombre</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="stokenValid" elementType="Argument">
+            <stringProp name="Argument.name">stokenValid</stringProp>
+            <stringProp name="Argument.value">servOrion</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="stokenInvalid" elementType="Argument">
+            <stringProp name="Argument.name">stokenInvalid</stringProp>
+            <stringProp name="Argument.value">stokeninvalid</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
