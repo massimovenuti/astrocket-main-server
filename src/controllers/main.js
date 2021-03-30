@@ -20,34 +20,40 @@ function index_research(server_list,name)
     return -1;
 }
 
+function port_research(server_list,port)
+{
+    for (i = 0;i<server_list.length;i++)
+        if (server_list[i].port == port)
+            return i;
+
+    return -1;
+}
+
 
 exports.addGameServer = (req, res) => {
     axios.post('http://localhost:8080/user/check', { token: req.headers.user_token })
     .then((res_user) => {
-        if (res_user.role != 'A'){
-            res.status(401).json("L'utilisateur n'a pas les droits")
+        if (res_user.data.role != 'A'){
+            res.status(401).json("L'utilisateur n'a pas les droits");
         } else {
-            const exists = 0;
-            server_list.foreach(elem => {
-                if (elem['port'] == req.body.port)
-                    exists = 1;
-            })
-            if (!ipRegex.test(req.body.address))
-                res.status(404).json("Paramètre(s) manquant(s) ou invalide(s)");
+            
+            if (!ipRegex().test(req.body.address))
+                res.status(404).json("Addresse invalide");
 
-            const num_regex = new RegExp('\\[0-9]{4}');
-            if (!req.body.port.match(num_regex))
-                res.status(404).json("Paramètre(s) manquant(s) ou invalide(s)");
+            if (typeof(req.body.port) != "number")
+                res.status(404).json("Port invalide");
 
-            if (exists){
+            if ((port_research(server_list,req.body.port) != -1)){
                 res.status(402).json("Port déjà utilisé");
             } else{
-                axios.post('http://localhost:8080/server/add', { token: req.headers.user_token, name: req.body.name })
+                axios.post('http://localhost:8080/server/add', { user_token: req.headers.user_token, name: req.body.name })
                 .then((res_server) => {
                     server_list.push({"name" : req.body.name, "address":req.body.address ,"port": req.body.port,"players": 0});
                     res.status(200).json("Un nouveau serveur a bien été créé");
+                    console.log(server_list);
                 })
                 .catch(err => {
+                    console.log(err);
                     if (err.response && (err.response.status == 400 || err.response.status == 401))
                         res.status(404).json("Paramètre(s) manquant(s) ou invalide(s)");
                     else
@@ -57,8 +63,9 @@ exports.addGameServer = (req, res) => {
         }
     })
     .catch(err => {
+        console.log(err);
         if (err.response && err.response.status == 400)
-            res.status(404).json("Paramètre(s) manquant(s) ou invalide(s)");
+            res.status(404).json("Token manquant ou invalide");
         else
             res.status(500).json("Erreur interne au serveur");
     });
