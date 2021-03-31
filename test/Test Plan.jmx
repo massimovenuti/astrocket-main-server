@@ -158,13 +158,13 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 400" enabled="true">
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 404" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="51508">400</stringProp>
+              <stringProp name="51512">404</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -213,7 +213,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;playersNB&quot;: &quot;${nbValid}&quot;&#xd;
+	&quot;playersNB&quot;: ${nbValid}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -284,13 +284,13 @@
             <stringProp name="filename"></stringProp>
           </ResultCollector>
           <hashTree/>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 400" enabled="true">
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 403" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="51508">400</stringProp>
+              <stringProp name="51511">403</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -303,7 +303,7 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
 	&quot;name&quot;:&quot;${nameValid}&quot;,&#xd;
-	&quot;playersNB&quot;: &quot;${nbValid}&quot;&#xd;
+	&quot;playersNB&quot;: ${nbValid}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -378,7 +378,7 @@
             <collectionProp name="Asserion.test_strings"/>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -391,7 +391,7 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
 	&quot;name&quot;: &quot;${nameInvalid}&quot;,&#xd;
-	&quot;playersNB&quot;: &quot;${nbValid}&quot;&#xd;
+	&quot;playersNB&quot;: ${nbValid}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -468,7 +468,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -552,17 +552,54 @@
             <stringProp name="filename"></stringProp>
           </ResultCollector>
           <hashTree/>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 403" enabled="true">
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 405" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="51511">403</stringProp>
+              <stringProp name="51513">405</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Add Game Server" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -585,11 +622,10 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: &quot;${nameDE}&quot;,&#xd;
+	&quot;name&quot;: &quot;${AddServName}&quot;,&#xd;
 	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
-	&quot;port&quot; &quot;${portValid}&quot;&#xd;
-}&#xd;
-</stringProp>
+	&quot;port&quot;: ${portValid}&#xd;
+}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -609,6 +645,19 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">user_token</stringProp>
+                <stringProp name="Header.value">admin1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 200" enabled="true">
             <collectionProp name="Asserion.test_strings">
               <stringProp name="49586">200</stringProp>
@@ -656,19 +705,6 @@
             <stringProp name="filename"></stringProp>
           </ResultCollector>
           <hashTree/>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-            <collectionProp name="HeaderManager.headers">
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">user_token</stringProp>
-                <stringProp name="Header.value">admin1</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Content-Type</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
-              </elementProp>
-            </collectionProp>
-          </HeaderManager>
-          <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Token invalide" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -677,9 +713,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;name&quot;: &quot;${AddServName}&quot;,&#xd;
 	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
-	&quot;port&quot; &quot;${portValid}&quot;&#xd;
+	&quot;port&quot;: ${portValid}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -700,13 +736,26 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">user_token</stringProp>
+                <stringProp name="Header.value">invalidToken</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 404" enabled="true">
             <collectionProp name="Asserion.test_strings">
               <stringProp name="51512">404</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -747,15 +796,6 @@
             <stringProp name="filename"></stringProp>
           </ResultCollector>
           <hashTree/>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-            <collectionProp name="HeaderManager.headers">
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">user_token</stringProp>
-                <stringProp name="Header.value">user1</stringProp>
-              </elementProp>
-            </collectionProp>
-          </HeaderManager>
-          <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Nom du serveur absent" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -765,7 +805,7 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
 	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
-	&quot;port&quot; &quot;${portValid}&quot;&#xd;
+	&quot;port&quot;: ${portValid2}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -792,7 +832,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -854,9 +894,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;name&quot;: &quot;${AddServName}&quot;,&#xd;
 	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
-	&quot;port&quot; &quot;${portValid}&quot;&#xd;
+	&quot;port&quot;: ${portValid}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -883,7 +923,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -928,7 +968,11 @@
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">user_token</stringProp>
-                <stringProp name="Header.value">admin1</stringProp>
+                <stringProp name="Header.value">3570a80433fe36539991b67761d26356e7926dfcf19b0a01e0163d90a96e57454a9dd89da631c4bf</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -941,9 +985,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;name&quot;: &quot;${AddServName}&quot;,&#xd;
 	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
-	&quot;port&quot; &quot;${portAUse}&quot;&#xd;
+	&quot;port&quot;: ${portAUse}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -970,7 +1014,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -1032,7 +1076,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;name&quot;: &quot;${AddServName}&quot;,&#xd;
 	&quot;address&quot;: &quot;${addrValid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1054,13 +1098,26 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">user_token</stringProp>
+                <stringProp name="Header.value">admin1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 404" enabled="true">
             <collectionProp name="Asserion.test_strings">
               <stringProp name="51512">404</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -1101,19 +1158,6 @@
             <stringProp name="filename"></stringProp>
           </ResultCollector>
           <hashTree/>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-            <collectionProp name="HeaderManager.headers">
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">user_token</stringProp>
-                <stringProp name="Header.value">admin1</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Content-Type</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
-              </elementProp>
-            </collectionProp>
-          </HeaderManager>
-          <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Adresse absente" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -1122,8 +1166,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
-	&quot;port&quot; &quot;${portValid}&quot;&#xd;
+	&quot;name&quot;: &quot;${AddServName}&quot;,&#xd;
+	&quot;port&quot;: ${portValid}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -1150,7 +1194,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -1212,9 +1256,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;name&quot;: &quot;${AddServName}&quot;,&#xd;
 	&quot;address&quot;: &quot;${addrValid}&quot;,&#xd;
-	&quot;port&quot; &quot;${portInvalid}&quot;&#xd;
+	&quot;port&quot;: &quot;${portInvalid}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -1235,13 +1279,13 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 404" enabled="true">
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 406" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="51512">404</stringProp>
+              <stringProp name="51514">406</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -1303,9 +1347,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: &quot;${nameValid}&quot;,&#xd;
+	&quot;name&quot;: &quot;${AddServName}&quot;,&#xd;
 	&quot;address&quot;: &quot;${addrInvalid}&quot;,&#xd;
-	&quot;port&quot; &quot;${portValid}&quot;&#xd;
+	&quot;port&quot;: ${portValid}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -1326,13 +1370,26 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 404" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">user_token</stringProp>
+                <stringProp name="Header.value">admin1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Code 405" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="51512">404</stringProp>
+              <stringProp name="51513">405</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -1373,20 +1430,44 @@
             <stringProp name="filename"></stringProp>
           </ResultCollector>
           <hashTree/>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-            <collectionProp name="HeaderManager.headers">
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">user_token</stringProp>
-                <stringProp name="Header.value">admin1</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Content-Type</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
-              </elementProp>
-            </collectionProp>
-          </HeaderManager>
-          <hashTree/>
         </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Delete Game Server" enabled="true">
         <stringProp name="TestPlan.comments">Permet la suppression d&apos;un serveur de jeu</stringProp>
@@ -1410,7 +1491,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;name&quot;: &quot;Orion&quot;&#xd;
+  &quot;name&quot;: &quot;${DelServName}&quot;&#xd;
 }&#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1437,7 +1518,7 @@
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">user_token</stringProp>
-                <stringProp name="Header.value">user1</stringProp>
+                <stringProp name="Header.value">admin1</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
@@ -1464,7 +1545,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;name&quot;: &quot;Orion&quot;&#xd;
+  &quot;name&quot;: &quot;${DelServName}&quot;&#xd;
 }&#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1476,7 +1557,7 @@
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1487,16 +1568,6 @@
           <stringProp name="TestPlan.comments">Paramètre(s) manquant(s) ou invalide(s)</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="400" enabled="true">
-            <collectionProp name="Asserion.test_strings">
-              <stringProp name="51508">400</stringProp>
-            </collectionProp>
-            <stringProp name="Assertion.custom_message"></stringProp>
-            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
-          </ResponseAssertion>
-          <hashTree/>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
@@ -1505,6 +1576,16 @@
               </elementProp>
             </collectionProp>
           </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="400" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="51508">400</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Nom du serveur manquant" enabled="true">
@@ -1516,7 +1597,7 @@
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1531,7 +1612,7 @@
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">user_token</stringProp>
-                <stringProp name="Header.value">user1</stringProp>
+                <stringProp name="Header.value">admin1</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -1542,7 +1623,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -1554,7 +1635,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;name&quot;: &quot;Orion&quot;&#xd;
+  &quot;name&quot;: &quot;${DelServName}&quot;&#xd;
 }&#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1566,7 +1647,7 @@
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1583,6 +1664,10 @@
                 <stringProp name="Header.name">user_token</stringProp>
                 <stringProp name="Header.value">invalidToken</stringProp>
               </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
@@ -1591,8 +1676,8 @@
               <stringProp name="51509">401</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
-            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -1604,7 +1689,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;name&quot;: &quot;Orion&quot;&#xd;
+  &quot;name&quot;: &quot;${DelServName}&quot;&#xd;
 }&#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1616,7 +1701,7 @@
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1633,6 +1718,10 @@
                 <stringProp name="Header.name">user_token</stringProp>
                 <stringProp name="Header.value">3570a80433fe36539991b67761d26356e7926dfcf19b0a01e0163d90a96e57454a9dd89da631c4bf</stringProp>
               </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
@@ -1642,7 +1731,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -1654,7 +1743,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;name&quot;: &quot;LaChouette&quot;&#xd;
+  &quot;name&quot;: &quot;${ServNameUnknow}&quot;&#xd;
 }&#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1666,7 +1755,7 @@
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">/main/GameServer</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1681,7 +1770,11 @@
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">user_token</stringProp>
-                <stringProp name="Header.value">user1</stringProp>
+                <stringProp name="Header.value">admin1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -1692,7 +1785,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -1925,6 +2018,15 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Requête valide" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -1993,7 +2095,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -2035,7 +2137,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -2048,7 +2150,7 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">[&#xd;
   {&#xd;
-    &quot;serverToken&quot;: &quot;${stokenInvalid}&quot;&#xd;
+    &quot;serverToken&quot;: &quot;${stokenUnknow}&quot;&#xd;
   }&#xd;
 ]</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -2077,7 +2179,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
@@ -2127,29 +2229,9 @@
             <stringProp name="Argument.value">Orion</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="addrValid" elementType="Argument">
-            <stringProp name="Argument.name">addrValid</stringProp>
-            <stringProp name="Argument.value">127.0.0.1</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="portValid" elementType="Argument">
-            <stringProp name="Argument.name">portValid</stringProp>
-            <stringProp name="Argument.value">4050</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="portAUse" elementType="Argument">
-            <stringProp name="Argument.name">portAUse</stringProp>
-            <stringProp name="Argument.value">4040</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="portInvalid" elementType="Argument">
-            <stringProp name="Argument.name">portInvalid</stringProp>
-            <stringProp name="Argument.value">portInvalid</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="addrInvalid" elementType="Argument">
-            <stringProp name="Argument.name">addrInvalid</stringProp>
-            <stringProp name="Argument.value">addrInvalid</stringProp>
+          <elementProp name="nameInvalid" elementType="Argument">
+            <stringProp name="Argument.name">nameInvalid</stringProp>
+            <stringProp name="Argument.value">Space</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="nbValid" elementType="Argument">
@@ -2162,6 +2244,51 @@
             <stringProp name="Argument.value">nombre</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="AddServName" elementType="Argument">
+            <stringProp name="Argument.name">AddServName</stringProp>
+            <stringProp name="Argument.value">Scorpion</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="DelServName" elementType="Argument">
+            <stringProp name="Argument.name">DelServName</stringProp>
+            <stringProp name="Argument.value">Scorpion</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="ServNameUnknow" elementType="Argument">
+            <stringProp name="Argument.name">ServNameUnknow</stringProp>
+            <stringProp name="Argument.value">LaChouette</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="portValid" elementType="Argument">
+            <stringProp name="Argument.name">portValid</stringProp>
+            <stringProp name="Argument.value">4070</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="portValid2" elementType="Argument">
+            <stringProp name="Argument.name">portValid2</stringProp>
+            <stringProp name="Argument.value">4080</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="portInvalid" elementType="Argument">
+            <stringProp name="Argument.name">portInvalid</stringProp>
+            <stringProp name="Argument.value">portInvalid</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="portAUse" elementType="Argument">
+            <stringProp name="Argument.name">portAUse</stringProp>
+            <stringProp name="Argument.value">4040</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="addrValid" elementType="Argument">
+            <stringProp name="Argument.name">addrValid</stringProp>
+            <stringProp name="Argument.value">127.0.0.1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="addrInvalid" elementType="Argument">
+            <stringProp name="Argument.name">addrInvalid</stringProp>
+            <stringProp name="Argument.value">addrInvalid</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="stokenValid" elementType="Argument">
             <stringProp name="Argument.name">stokenValid</stringProp>
             <stringProp name="Argument.value">servOrion</stringProp>
@@ -2169,12 +2296,12 @@
           </elementProp>
           <elementProp name="stokenInvalid" elementType="Argument">
             <stringProp name="Argument.name">stokenInvalid</stringProp>
-            <stringProp name="Argument.value">stokeninvalid</stringProp>
+            <stringProp name="Argument.value">invalidtoken</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="nameDE" elementType="Argument">
-            <stringProp name="Argument.name">nameDE</stringProp>
-            <stringProp name="Argument.value">Space</stringProp>
+          <elementProp name="stokenUnknow" elementType="Argument">
+            <stringProp name="Argument.name">stokenUnknow</stringProp>
+            <stringProp name="Argument.value">d03b1bf310218e16baa49f19bcd991c5866fd9fea8f454d8aab12367fb176ac289f844214e60f5c475a49eaaac344ef3d40b1713a32254975c326fa84a492cf39b252c8fa9ba661e66a97d</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
