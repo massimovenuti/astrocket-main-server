@@ -1,47 +1,34 @@
 #coding:utf-8
+import subprocess
+import sys
+import time
+import http
 
-import socket
-import requests
-import json
-
-host, port = ('',10000) 
-
-socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-socket.bind((host,port))
-
-##### Listes de tuples (Name,port,adress,player_count)
-server_list = [("Orion",1024,"localhost",0)]
+# Liste de serveurs
+# Un serveur => tuple (Nom,Port,Nbr_joueurs)
+server_list = [(),()]
+result = []
 #####
 
-print("Server is up and running ...\n")
+print("Main is up and running ...\n")
 
 while True:
-    socket.listen(10) # 10 connexions échouée avant de refuser
-    print("Listening ...\n")
-    conn, address = socket.accept()
-    print("Accept connection ...\n")
 
-    token = conn.recv(128)
-    token = json.loads(token[0]['user_token'])
-    print("Token utilisateur : " + token)
+    for i in range(len(server_list)):
+        # Ajout d'éléments dans la liste pour les arguments
+        # Ligne de test pour vérifier qu'un processus est vivant ou mort
+        result.append(subprocess.Popen([sys.executable,"-c", "import time\ntime.sleep("+ str(i*10) +")"]))
 
+    print("Checking process status ...")
 
-    # r = requests.post('https://auth.aw.alexandre-vogel.fr/user/check', data = {'user_token' : user_token})*
+    # Vérification de l'état d'un processus
+    for i in range(len(server_list)):
+        if result[i].poll() is None:
+            print("("+str(i)+") Processus alive")
+        else:
+            print("("+str(i)+") Processus dead")
 
-    # if r.status_code == 400 or r.status_code == 401
-    #    print(r.json)
-    # else
-    #    print("Valid user")
-
-    
+    time.sleep(5)
 
 
-
-
-    
-
-
-
-conn.close()
-socket.close()
     
