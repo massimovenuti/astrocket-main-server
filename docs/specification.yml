@@ -12,7 +12,7 @@ tags:
     description: Ensemble des fonctions liées aux serveurs
 
 paths:
-  /addGS:
+  /GameServer:
     post:
       tags: 
         - Serveurs
@@ -20,7 +20,7 @@ paths:
       description: Ajout d'un nouveau serveur de jeu
       parameters:
         - in: header
-          name: userToken
+          name: user_token
           schema:
             type: string
           required: true
@@ -56,9 +56,122 @@ paths:
         '403':
           description: Nom du serveur déjà existant
         '404':
-          description: Paramètre(s) manquant(s) ou invalide(s)
+          description: Token manquant ou invalide
+        '405':
+          description: Addresse invalide
+        '406':
+          description: Port invalide
         '500':
           description: Erreur interne au serveur
+          
+    delete:
+      tags: 
+        - Serveurs
+      summary: Permet la suppression d'un serveur de jeu
+      description: Suppression d'un serveur de jeu
+      parameters:
+        - in: header
+          name: user_token
+          schema:
+            type: string
+          required: true
+          description: Token pour identifier l'utilisateur
+      requestBody:
+        content:
+          json:
+            schema:
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  example: ServerName
+                  description: Nom unique du serveur
+      responses:
+        '200':
+          description: Le serveur a bien été supprimé
+        '400':
+          description: Paramètre(s) manquant(s) ou invalide(s)
+        '401':
+          description: Token invalide
+        '402':
+          description: L'utilisateur n'a pas les droits
+        '403':
+          description: Le serveur n'existe pas
+        '500':
+          description: Erreur interne au serveur
+          
+    put:
+        tags:
+          - Serveurs
+        summary: Modifie le nombre de joueurs sur un serveur
+        description: Permet de modifier, lors de l'arrivée ou du départ d'un joueur, le nombre de joueurs d'un serveur
+        parameters:
+          - in: header
+            name: server_token
+            schema:
+              type: string
+            required: true
+            description: Token pour identifier un serveur
+        requestBody:
+          content:
+            json:
+              schema:
+                required:
+                  - name
+                  - playersNB
+                properties:
+                  name:
+                    type: string
+                    example: ServerName
+                    description: Nom unique du serveur
+                  playersNB:
+                    type: number
+                    example: -1 
+                    description: Nombre de joueurs du serveur
+        responses:
+          "200":
+            description: Le nombre de joueurs a bien été modifié
+          "400":
+            description: Paramètre(s) manquant(s)
+          "401":
+            description: Token invalide
+          "402":
+            description: Le serveur n'existe pas
+          "403":
+            description: Nom manquant
+          "404":
+            description: Nombre de joueurs manquant
+          "405":
+            description: Nombre de joueurs valide
+          "500":
+            description: Erreur serveur interne
+  
+  /alive:
+    post:
+      tags:
+        - Serveurs
+      summary: Vérifie que le Main Server est toujours vivant
+      description: Reçoie une liste de tokens et vérifie qu'il s'agit bien d'un serverToken valide
+      requestBody:
+        content:
+          json:
+            schema:
+              type: array
+              description: Liste de tokens des Games Servers vivants
+              items:
+                $ref: '#/components/schemas/aliveGameServer'
+      responses:
+        "200":
+          description: Le Main Server est toujours opérationnel
+        "400":
+          description: Paramètre(s) manquant(s) ou invalide(s)
+        "401":
+          description: "L'un des ServerToken est invalide"
+        "402":
+          description: "L'un des ServerToken ne se trouve pas dans server_list"
+        "500":
+          description: "Erreur interne au serveur"
 
   /list:
     get:
@@ -66,33 +179,57 @@ paths:
         - Serveurs
       summary: Récupère la liste des Game Servers avec leurs informations
       description: Récupère la liste des Game Servers avec leurs informations
+      parameters:
+        - in: header
+          name: user_token
+          schema:
+            type: string
+          required: true
+          description: Token pour identifier l'utilisateur
       responses:
-        '200':
+        "200":
           description: L'ensemble des Game Servers a été récupéré
           content:
             json:
               schema:
                 type: array
-                description: Liste des Game Servers contenant leur nom, leur nombre de joueurs et leur ping
+                description: Liste des Game Servers contenant leur nom, leur adresse IP, leur numéro de port et leur nombre de joueurs
                 items:
                   $ref: '#/components/schemas/server_list'
+        "400":
+          description: Paramètre(s) manquant(s) ou invalide(s)
+        "401": 
+          description: Token invalide
         "500":
           description: Internal Server Error
-  
+    
 components:
   schemas:
     server_list:
       type: object
       properties:
-        servername:
+        name:
           type: string
           example: server1
           description: Nom du serveur
-        nb_user:
+        address:
+          type: string
+          example: 127.4.5.8
+          description: Adresse IP du serveur
+        port:
+          type: number
+          example: 3066
+          description: Port du serveur
+        players:
           type: number
           example: 3
           description: Nombre de joueur sur le serveur
-        ping:
-          type: number
-          example: 40
-          description: Temps de latence du serveur
+
+
+    aliveGameServer:
+      type: object
+      properties:
+        serverToken:
+          type: string
+          example: 7dea256198bb51e501ee2d18da735a006e85ef00d6fde30dbd4c141490db9dc8
+          description: Token pour identifier un serveur
