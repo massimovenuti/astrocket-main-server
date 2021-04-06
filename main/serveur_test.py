@@ -18,15 +18,6 @@ class GameServer:
         # args = shlex.split("./exec {} {}".format(self.port, self.token))
         self.proc = subprocess.Popen("./mock_file", stdout=sys.stdout, stderr=sys.stderr)
 
-        hostname = socket.gethostname()
-        local_ip = socket.gethostbyname(hostname)
-
-        parameters = {'name':self.name, 'address':local_ip, 'port':self.port}
-        r = requests.post('http://localhost:3500/main/GameServer', data=parameters)
-
-        if (r.status_code != 200):
-            print("Server " + self.name + " hasn't started") 
-
 def find_server_pid(pid, server_list):
     for server in server_list:
         if server.proc.pid == pid:
@@ -44,9 +35,18 @@ def init_server():
 
     return server_list, token_list
 
-def manage_server(server_list):
+def manage_server(server_list,token):
     for server in server_list:
         server.start()
+
+        hostname = socket.gethostname()
+        local_ip = socket.gethostbyname(hostname)
+
+        parameters = {'name':self.name, 'address':local_ip, 'port':self.port}
+        r = requests.post('http://localhost:3500/main/GameServer', data=parameters)
+
+        if (r.status_code != 200):
+            print("Server " + self.name + " hasn't started") 
     
     while 1:
         pid, status = os.wait()
@@ -60,7 +60,10 @@ def print_server(server_list):
 
 print("Server running ...")
 
+parameters = {"username": "Main", "password":"main"}
+r = requests.post('http://localhost:3500/user/login', data=parameters)
+
 server_list, token_list = init_server()
 print_server(server_list)
-manage_server(server_list)
+manage_server(server_list,r.json)
 
