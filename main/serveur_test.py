@@ -22,10 +22,10 @@ class GameServer:
         local_ip = socket.gethostbyname(hostname)
 
         parameters = {'name':self.name, 'address':local_ip, 'port':self.port}
-        r = requests.post('https://localhost:3500/main/GameServer', data=parameters)
+        r = requests.post('http://localhost:3500/main/GameServer', data=parameters)
 
-        # if (r.status_code != 200):
-        #    print("Server " + self.name + " hasn't started") 
+        if (r.status_code != 200):
+            print("Server " + self.name + " hasn't started") 
 
 def find_server_pid(pid, server_list):
     for server in server_list:
@@ -61,6 +61,6 @@ def print_server(server_list):
 print("Server running ...")
 
 server_list, token_list = init_server()
-# print_server(server_list)
+print_server(server_list)
 manage_server(server_list)
 
