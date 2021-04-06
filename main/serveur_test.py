@@ -7,6 +7,10 @@ import sys
 import requests
 import socket
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 class GameServer:
     def __init__(self, token, port, name):
         self.token = token
@@ -43,7 +47,8 @@ def manage_server(server_list,token):
         local_ip = socket.gethostbyname(hostname)
 
         parameters = {'name':server.name, 'address':local_ip, 'port':server.port}
-        r = requests.post('http://localhost:3500/main/GameServer', data=parameters)
+        headers = {'user_token': os.environ.get("TOKEN")}
+        r = requests.post('http://localhost:3500/main/GameServer', data=parameters, headers=headers)
 
         if (r.status_code != 200):
             print("Server " + server.name + " hasn't started") 
@@ -61,7 +66,7 @@ def print_server(server_list):
 print("Server running ...")
 
 parameters = {"username": "Main", "password":"main"}
-r = requests.post('http://localhost:3500/user/login', data=parameters)
+r = requests.post('http://localhost:3010/user/login', data=parameters)
 
 server_list, token_list = init_server()
 print_server(server_list)
