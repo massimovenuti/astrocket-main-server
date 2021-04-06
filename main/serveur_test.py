@@ -42,11 +42,11 @@ def manage_server(server_list,token):
         hostname = socket.gethostname()
         local_ip = socket.gethostbyname(hostname)
 
-        parameters = {'name':self.name, 'address':local_ip, 'port':self.port}
+        parameters = {'name':server.name, 'address':local_ip, 'port':server.port}
         r = requests.post('http://localhost:3500/main/GameServer', data=parameters)
 
         if (r.status_code != 200):
-            print("Server " + self.name + " hasn't started") 
+            print("Server " + server.name + " hasn't started") 
     
     while 1:
         pid, status = os.wait()
