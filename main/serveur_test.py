@@ -15,17 +15,17 @@ class GameServer:
         self.proc = None
 
     def start(self):
-        args = shlex.split("./exec {} {}".format(self.port, self.token))
-        self.proc = subprocess.Popen(args, stdout=sys.stdout, stderr=sys.stderr)
+        # args = shlex.split("./exec {} {}".format(self.port, self.token))
+        self.proc = subprocess.Popen("./mock_file", stdout=sys.stdout, stderr=sys.stderr)
 
         hostname = socket.gethostname()
         local_ip = socket.gethostbyname(hostname)
 
         parameters = {'name':self.name, 'address':local_ip, 'port':self.port}
-        r = requests.post('https://main.aw.alexandre-vogel.fr/main/GameServer', data=parameters)
+        r = requests.post('https://localhost:3500/main/GameServer', data=parameters)
 
-        if (r.status_code != 200):
-            print("Server " + self.name + " hasn't started") 
+        # if (r.status_code != 200):
+        #    print("Server " + self.name + " hasn't started") 
 
 def find_server_pid(pid, server_list):
     for server in server_list:
@@ -62,5 +62,5 @@ print("Server running ...")
 
 server_list, token_list = init_server()
 # print_server(server_list)
-# manage_server(server_list)
+manage_server(server_list)
 
