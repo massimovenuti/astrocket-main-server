@@ -1,14 +1,21 @@
 import psutil, os, time, requests, sys
+
+token = sys.argv[1]
+size = sys.argv[2]
+token_list = sys.argv[3:3+size]
+server_list = sys.argv[3+size:]
 me = psutil.Process(os.getpid())
 
 while me.parent is not None:
     print("Operating main server")
 
-    parameters = {'array' : sys.argv[0]}
-    r = requests.post('http://main.aw.alexandre-vogel.fr:3500/main/alive', data=parameters)
+    parameters = {'array' : token_list}
+    #r = requests.post('http://main.aw.alexandre-vogel.fr:3500/main/alive', json=parameters)
+    r = requests.post('http://localhost:3500/main/alive', json=parameters)
 
     if (r.status_code == 200):
         print("Successfull alive checking")
+        time.sleep(5)
     elif (r.status_code == 400):
         print("Parameters are missing or invalid")
     elif (r.status_code == 401 or r.status == 402):
@@ -20,9 +27,10 @@ while me.parent is not None:
     
 print("Main server disappear")
 
-for server in sys.argv[2]:
+for server in server_list:
     parameters = {'name' : server.name}
-    r = requests.delete('http://main.alexandre-vogel.fr/main/GameServer', data=parameters, headers=sys.argv[1])
+    #r = requests.delete('http://main.alexandre-vogel.fr:3500/main/GameServer', json=parameters, headers=sys.argv[1])
+    r = requests.delete('http://localhost:3500/main/GameServer', json=parameters, headers=token)
 
     if (r.status_code == 200):
         print("Successfull deleting")
