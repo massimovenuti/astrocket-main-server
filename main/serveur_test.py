@@ -12,8 +12,8 @@ import socket
 #load_dotenv()
 
 class GameServer:
-    def __init__(self, token, port, name):
-        self.token = token
+    def __init__(self, port, name):
+        self.token = None
         self.port = port
         self.name = name
         self.proc = None
@@ -27,29 +27,27 @@ def find_server_pid(pid, server_list):
         if server.proc.pid == pid:
             return server
 
-def init_server():
+def init_server(token):
     server_list = []
     token_list = []
 
     with open("server_list.txt", "r") as fp:
         for _, line in enumerate(fp):
             info = line.split(" ")
-            token_list.append(info[0])
-            server_list.append(GameServer(info[0], info[1], info[2]))
+            server_list.append(GameServer(info[0], info[1]))
 
-    return server_list, token_list
-
-def manage_server(server_list,token):
     for server in server_list:
         hostname = socket.gethostname()
         local_ip = socket.gethostbyname(hostname)
 
         parameters = {'name':server.name, 'address':local_ip, 'port':server.port}
-        headers = {'user_token': os.environ.get("TOKEN")}
-        r = requests.post('http://localhost:3500/main/GameServer', data=parameters, headers=headers)
+        
+        r = requests.post('http://main.aw.alexandre-vogel.fr:3500/main/GameServer', data=parameters, headers=token)
 
         if (r.status_code == 200):
             server.start()
+            token_list.append(r)
+            server.token = r
             print("Server " + server.name + " has started") 
         elif (r.status_code == 404 or r.status_code == 405 or r.status_code == 406):
             print("Server " + server.name + " hasn't started because some parameters are missing or are invalid")
@@ -59,6 +57,10 @@ def manage_server(server_list,token):
             print("Server " + server.name + " hasn't started because user main can't create servers")
         else:
             print("Server " + server.name + " hasn't started because bigMain doesn't respond")
+
+    return server_list, token_list
+
+def manage_server(server_list):
 
     while 1:
         pid, status = os.wait()
@@ -72,8 +74,8 @@ def print_server(server_list):
 
 print("Server running ...")
 
-parameters = {"username": "Main", "password":"main"}
-r = requests.post('http://localhost:3010/user/login', data=parameters)
+parameters = {"username": os.environ.get("USERNAME"),"password": os.environ.get("PASSWORD")}
+r = requests.post('http://main.aw.alexandre-vogel.fr:3010/user/login', data=parameters)
 
 if (r.status_code == 400 or r.status_code == 402 or r.status_code == 403):
     print("Some arguments are missing or invalid")
@@ -82,7 +84,7 @@ elif (r.status_code == 401):
 else:
     print("Authentification API doesn't respond")
 
-server_list, token_list = init_server()
+server_list, token_list = init_server(r)
 print_server(server_list)
 manage_server(server_list,r.json)
-
+# Ajouter /alive
