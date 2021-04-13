@@ -7,9 +7,9 @@ import sys
 import requests
 import socket
 
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-#load_dotenv()
+load_dotenv()
 
 class GameServer:
     def __init__(self, port, name):
@@ -69,7 +69,10 @@ def manage_server(server_list):
 
 def print_server(server_list):
     for server in server_list:
-        print("Serveur " + server.name + " listening on port " + server.port,)
+        print("Serveur " + server.name + " listening on port " + server.port)
+
+def alive_checker(token_list,token,server_list):
+    subprocess.call(['python3','lifecheck.py',token_list,token,server_list])
 
 
 print("Server running ...")
@@ -85,6 +88,7 @@ else:
     print("Authentification API doesn't respond")
 
 server_list, token_list = init_server(r)
+alive_checker(token_list,token,server_list)
 print_server(server_list)
-manage_server(server_list,r.json)
-# Ajouter /alive
+manage_server(server_list)
+
