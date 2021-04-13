@@ -81,14 +81,14 @@ parameters = {"username": os.environ.get("USERNAME"),"password": os.environ.get(
 r = requests.post('http://main.aw.alexandre-vogel.fr:3010/user/login', data=parameters)
 
 if (r.status_code == 400 or r.status_code == 402 or r.status_code == 403):
-    print("Some arguments are missing or invalid")
+    print("Some parameters are missing or invalid")
 elif (r.status_code == 401):
     print("User main has been banned")
 else:
     print("Authentification API doesn't respond")
 
 server_list, token_list = init_server(r)
-alive_checker(token_list,token,server_list)
+alive_checker(token_list,r,server_list)
 print_server(server_list)
 manage_server(server_list)
 
