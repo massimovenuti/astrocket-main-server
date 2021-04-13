@@ -7,9 +7,9 @@ import sys
 import requests
 import socket
 
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
-load_dotenv()
+#load_dotenv()
 
 class GameServer:
     def __init__(self, token, port, name):
@@ -41,8 +41,6 @@ def init_server():
 
 def manage_server(server_list,token):
     for server in server_list:
-        server.start()
-
         hostname = socket.gethostname()
         local_ip = socket.gethostbyname(hostname)
 
@@ -50,9 +48,18 @@ def manage_server(server_list,token):
         headers = {'user_token': os.environ.get("TOKEN")}
         r = requests.post('http://localhost:3500/main/GameServer', data=parameters, headers=headers)
 
-        if (r.status_code != 200):
-            print("Server " + server.name + " hasn't started") 
-    
+        if (r.status_code == 200):
+            server.start()
+            print("Server " + server.name + " has started") 
+        elif (r.status_code == 404 or r.status_code == 405 or r.status_code == 406):
+            print("Server " + server.name + " hasn't started because some parameters are missing or are invalid")
+        elif (r.status_code == 402 or r.status_code == 403):
+            print("Server " + server.name + " hasn't started because some parameters are already used")
+        elif (r.status_code == 401):
+            print("Server " + server.name + " hasn't started because user main can't create servers")
+        else:
+            print("Server " + server.name + " hasn't started because bigMain doesn't respond")
+
     while 1:
         pid, status = os.wait()
         proc = find_server_pid(pid, server_list)
@@ -67,6 +74,13 @@ print("Server running ...")
 
 parameters = {"username": "Main", "password":"main"}
 r = requests.post('http://localhost:3010/user/login', data=parameters)
+
+if (r.status_code == 400 or r.status_code == 402 or r.status_code == 403):
+    print("Some arguments are missing or invalid")
+elif (r.status_code == 401):
+    print("User main has been banned")
+else:
+    print("Authentification API doesn't respond")
 
 server_list, token_list = init_server()
 print_server(server_list)
