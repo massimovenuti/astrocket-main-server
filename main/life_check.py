@@ -27,8 +27,8 @@ while me.parent is not None:
     
 print("Main server disappear")
 
-for server in server_list:
-    parameters = {'name' : server.name}
+for i in range (len(server_list)):
+    parameters = {'name' : server_list[i][3]}
     #r = requests.delete('http://main.alexandre-vogel.fr:3500/main/GameServer', json=parameters, headers=sys.argv[1])
     r = requests.delete('http://localhost:3500/main/GameServer', json=parameters, headers=token)
 
@@ -42,3 +42,4 @@ for server in server_list:
         print("User main can't delete servers")
     else:
         print("BigMain doesn't respond")
+

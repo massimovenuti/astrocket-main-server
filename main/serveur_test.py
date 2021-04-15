@@ -22,6 +22,10 @@ class GameServer:
         # args = shlex.split("./exec {} {}".format(self.port, self.token))
         self.proc = subprocess.Popen("./mock_file", stdout=sys.stdout, stderr=sys.stderr)
 
+    def intoTab(self):
+        tab = [self.token,self.port,self.name] 
+        return tab
+
 def find_server_pid(pid, server_list):
     for server in server_list:
         if server.proc.pid == pid:
@@ -73,13 +77,17 @@ def print_server(server_list):
         print("Serveur " + server.name + " listening on port " + server.port)
 
 def alive_checker(token_list,token,server_list):
+    server_list_tab = []
+    for server in server_list:
+        server_list_str.append(server.intoTab())
+
     subprocess.call(['python3','life_check.py',token,str(len(token_list))]+token_list+server_list)
 
 
 print("Server running ...")
 
 PARAMS = {'username':os.environ.get("NAME"),'password':os.environ.get("PASSWORD")}
-#r = requests.post('http://main.aw.alexandre-vogel.fr:3010/user/login', json=PARAMS)
+r = requests.post('http://main.aw.alexandre-vogel.fr:3010/user/login', json=PARAMS)
 r = requests.post('http://localhost:8080/user/login', json=PARAMS)
 if (r.status_code == 400 or r.status_code == 402 or r.status_code == 403):
     print("Some parameters are missing or invalid")
