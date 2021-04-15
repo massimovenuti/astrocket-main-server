@@ -81,7 +81,7 @@ def alive_checker(token_list,token,server_list):
     for server in server_list:
         server_list_str.append(server.intoTab())
 
-    subprocess.call(['python3','life_check.py',token,str(len(token_list))]+token_list+server_list)
+    subprocess.call(['python3','life_check.py',token,str(len(token_list))]+token_list+server_list_tab)
 
 
 print("Server running ...")
