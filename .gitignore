@@ -1,1 +1,3 @@
 *.json
+main/.env
+bigMain/src/node_modules
