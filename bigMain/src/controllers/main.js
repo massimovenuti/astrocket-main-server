@@ -51,7 +51,7 @@ exports.addGameServer = (req, res) => {
                     axios.post('http://localhost:8080/server/add', { user_token: req.headers.user_token, name: req.body.name })
                     .then((res_server) => {
                         server_list.push({"name" : req.body.name, "address":req.body.address ,"port": req.body.port,"players": 0});
-                        res.status(200).json("Un nouveau serveur a bien été créé");
+                        res.status(200).send(res_server.data.token);
                     })
                     .catch(err => {
                         if (err.response && (err.response.status == 400 || err.response.status == 401))
