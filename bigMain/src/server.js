@@ -1,8 +1,22 @@
-const http = require('http');
+const spdy = require('spdy')
+const fs = require('fs')
+
 const app = require('./app');
 
-app.set('port', 3500);
+const port = 3500
 
-const server = http.createServer(app);
+const options = {
+    key: fs.readFileSync(__dirname + '/keys/main_server.key'),
+    cert: fs.readFileSync(__dirname + '/keys/main_server.crt')
+}
 
-server.listen(3500, () => console.log("Server running"));
+spdy
+    .createServer(options, app)
+    .listen(port, (error) => {
+        if (error) {
+            console.error(error)
+            return process.exit(1)
+        } else {
+            console.log('Listening on port: ' + port + '.')
+        }
+    })
