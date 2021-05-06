@@ -22,6 +22,31 @@ function port_research(server_list,port)
 }
 
 console.log(server_list);
+var token
+
+axios.post('https://auth.aw.alexandre-vogel.fr:3010/user/login', { 'username': 'Main', 'password': 'main' })
+    .then((res_auth) => {
+        token = res_auth.data.token;
+    })
+    .catch((err) => {
+        console.log(err);
+        process.exit(1)
+    })
+
+setInterval(() => {
+    server_list.forEach(s => {
+        if (s.last_call < new Date().getTime() - 10) {
+            axios.post('https://auth.aw.alexandre-vogel.fr:3010/server/remove', {name: s.name, token: token})
+            .then((res_auth) => {
+                const idx = index_research(server_list,req.body.name);;
+                server_list.splice(idx);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        }
+    });
+}, 10000);
 
 exports.addGameServer = (req, res) => {
     if (!req.body.port || !req.body.address) {
@@ -42,7 +67,7 @@ exports.addGameServer = (req, res) => {
                 } else{
                     axios.post('https://auth.aw.alexandre-vogel.fr:3010/server/add', { user_token: req.headers.user_token, name: req.body.name })
                     .then((res_server) => {
-                        server_list.push({"name" : req.body.name, "address":req.body.address ,"port": req.body.port,"players": 0});
+                        server_list.push({"name" : req.body.name, "address":req.body.address ,"port": req.body.port,"players": 0, "last_call": new Date().getTime()});
                         res.status(200).send(res_server.data.token);
                     })
                     .catch(err => {
@@ -132,21 +157,27 @@ exports.aliveMainServer = (req, res) => {
     if(!req.body[0]){
         res.status(400).send('Paramètre(s) manquant(s) ou invalide(s)');
     } else {
-        var length = req.body.length;
-        var elem = req.body[Math.floor(Math.random() * (length-1))];
-        axios.post('https://auth.aw.alexandre-vogel.fr:3010/server/check', {token: elem.serverToken})
-        .then((res_auth) => {
-            const idx = index_research(server_list,res_auth.data.name);
-            if(idx == -1)
-                res.status(402).send('L\'un des ServerToken ne se trouve pas dans server_list');
-            else
-                res.status(200).send('Le Main Server est toujours opérationnel');
+        var error = 0;
+        req.body.forEach(t => {
+            axios.post('https://auth.aw.alexandre-vogel.fr:3010/server/check', {token: t.serverToken})
+            .then((res_auth) => {
+                const idx = index_research(server_list,res_auth.data.name);
+                if(idx > -1)
+                    server_list[idx].last_call = new Date().getTime();
+            })
+            .catch((err) => {
+                if (err.response && err.response.status == 401)
+                    error = 401
+                else
+                    error = 500
+            });
         })
-        .catch((err) => {
-            if (err.response && err.response.status == 401)
-                res.status(401).send('L\'un des ServerToken est invalide');
-            else
-                res.status(500).json("Erreur interne au serveur");
-        });
+        if (error === 401) {
+            res.status(401).send('L\'un des ServerToken est invalide');
+        } else if (error === 500) {
+            res.status(500).json("Erreur interne au serveur");
+        } else {
+            res.status(200).send('Le Main Server est toujours opérationnel');
+        }
     }
 }
