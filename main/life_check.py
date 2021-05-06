@@ -12,8 +12,8 @@ while psutil.pid_exists(parent):
     parameters = []
     for servertoken in token_list:
         parameters.append({"serverToken": servertoken})
-    #r = requests.post('http://main.aw.alexandre-vogel.fr:3500/main/alive', json=parameters)
-    r = requests.post('http://main.aw.alexandre-vogel.fr:3500/main/alive', json=parameters)
+    
+    r = requests.post('https://main.aw.alexandre-vogel.fr:3500/main/alive', json=parameters)
 
     if (r.status_code == 200):
         print("Successfull alive checking")

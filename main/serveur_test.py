@@ -8,9 +8,10 @@ import socket
 import json
 
 class GameServer:
-    def __init__(self, exec_file, port, name):
+    def __init__(self, exec_file, ip, port, name):
         self.token = None
         self.exec_file = exec_file
+        self.ip = ip
         self.port = port
         self.name = name
         self.proc = None
@@ -32,16 +33,14 @@ def find_server_pid(pid, server_list):
 def init_server(token, exec_file):
     server_list = []
     token_list = []
-    with open("server_list.txt", "r") as fp:
+    with open("/home/avogel/Documents/PI/aw_mainserver/main/server_list.txt", "r") as fp:
         for _, line in enumerate(fp):
             info = line.split(" ")
-            server_list.append(GameServer(exec_file, info[0], info[1]))
+            print(info)
+            server_list.append(GameServer(exec_file, info[0], info[1], info[2]))
 
     for server in server_list:
-        hostname = socket.gethostname()
-        local_ip = socket.gethostbyname(hostname)
-
-        parameters = {'name':server.name, 'address':local_ip, 'port':int(server.port)}
+        parameters = {'name':server.name, 'address':server.ip, 'port':int(server.port)}
         header = {"user_token":token["token"]}
 
         r = requests.post('https://main.aw.alexandre-vogel.fr:3500/main/GameServer', json=parameters, headers=header)
@@ -81,7 +80,7 @@ def alive_checker(token_list,token,server_list):
     subprocess.call(['python3','life_check.py',token,str(len(token_list))]+token_list+server_list_tab)
 
 if __name__ == "__main__":
-    with open(sys.argv[1]) as conf_file:
+    with open("/home/avogel/Documents/PI/aw_mainserver/main/conf.json") as conf_file:
         conf = json.load(conf_file)
 
     print("Server running ...")
