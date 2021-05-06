@@ -34,7 +34,7 @@ axios.post('https://auth.aw.alexandre-vogel.fr:3010/user/login', { 'username': '
     })
 
 setInterval(() => {
-    server_list.forEach(s, i => {
+    server_list.forEach((s, i) => {
         if (s.last_call < new Date().getTime() - 10) {
             axios.post('https://auth.aw.alexandre-vogel.fr:3010/server/remove', {name: s.name, token: token})
             .then((res_auth) => {
