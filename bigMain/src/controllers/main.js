@@ -1,10 +1,7 @@
 const axios = require('axios');
 const ipRegex = require('ip-regex');
 
-var server_list = [{"name" : "Orion", "address" : "localhost", "port" : 4040, "players" : 10},
-                   {"name" : "Andromède", "address" : "localhost", "port" : 4041, "players" : 2},
-                   {"name" : "Pégase", "address" : "localhost", "port" : 4042, "players" : 5}
-                  ];
+var server_list = [];
 
 function index_research(server_list,name)
 {
