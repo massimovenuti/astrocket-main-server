@@ -31,7 +31,7 @@ exports.addGameServer = (req, res) => {
     } else if (typeof(req.body.port) != "number"){
         res.status(406).json("Port invalide");
     } else {
-        axios.post('https://auth.aw.alexandre-vogel.fr/user/check', { token: req.headers.user_token })
+        axios.post('https://auth.aw.alexandre-vogel.fr:3010/user/check', { token: req.headers.user_token })
         .then((res_user) => {
             if (res_user.data.role != 'A'){
                 res.status(401).json("L'utilisateur n'a pas les droits");
@@ -40,7 +40,7 @@ exports.addGameServer = (req, res) => {
                 if ((port_research(server_list,req.body.port) != -1)){
                     res.status(402).json("Port déjà utilisé");
                 } else{
-                    axios.post('https://auth.aw.alexandre-vogel.fr/server/add', { user_token: req.headers.user_token, name: req.body.name })
+                    axios.post('https://auth.aw.alexandre-vogel.fr:3010/server/add', { user_token: req.headers.user_token, name: req.body.name })
                     .then((res_server) => {
                         server_list.push({"name" : req.body.name, "address":req.body.address ,"port": req.body.port,"players": 0});
                         res.status(200).send(res_server.data.token);
@@ -65,7 +65,7 @@ exports.addGameServer = (req, res) => {
 
 
 exports.listGameServer = (req, res) => {
-    axios.post('https://auth.aw.alexandre-vogel.fr/user/check', { token: req.headers.user_token })
+    axios.post('https://auth.aw.alexandre-vogel.fr:3010/user/check', { token: req.headers.user_token })
     .then((res_auth) => {
         res.status(200).json(server_list);
     })
@@ -81,7 +81,7 @@ exports.listGameServer = (req, res) => {
 
 
 exports.deleteGameServer = (req, res) => {
-    axios.post('https://auth.aw.alexandre-vogel.fr/server/remove', {name: req.body.name, token: req.headers.user_token})
+    axios.post('https://auth.aw.alexandre-vogel.fr:3010/server/remove', {name: req.body.name, token: req.headers.user_token})
     .then((res_auth) => {
         const idx = index_research(server_list,req.body.name);;
         server_list.splice(idx);
@@ -109,7 +109,7 @@ exports.updateGameServer = (req, res) => {
     } else if (typeof(req.body.playersNB) != "number"){
         res.status(405).json("Nombre de joueurs invalide");
     } else {
-        axios.post('https://auth.aw.alexandre-vogel.fr/server/check', {token: req.headers.token})
+        axios.post('https://auth.aw.alexandre-vogel.fr:3010/server/check', {token: req.headers.token})
         .then((res_auth) => {
             const idx = index_research(server_list,req.body.name);
             if (idx == -1)
@@ -134,7 +134,7 @@ exports.aliveMainServer = (req, res) => {
     } else {
         var length = req.body.length;
         var elem = req.body[Math.floor(Math.random() * (length-1))];
-        axios.post('https://auth.aw.alexandre-vogel.fr/server/check', {token: elem.serverToken})
+        axios.post('https://auth.aw.alexandre-vogel.fr:3010/server/check', {token: elem.serverToken})
         .then((res_auth) => {
             const idx = index_research(server_list,res_auth.data.name);
             if(idx == -1)
