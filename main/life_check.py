@@ -13,7 +13,7 @@ while psutil.pid_exists(parent):
     for servertoken in token_list:
         parameters.append({"serverToken": servertoken})
     #r = requests.post('http://main.aw.alexandre-vogel.fr:3500/main/alive', json=parameters)
-    r = requests.post('http://localhost:3500/main/alive', json=parameters)
+    r = requests.post('http://main.aw.alexandre-vogel.fr:3500/main/alive', json=parameters)
 
     if (r.status_code == 200):
         print("Successfull alive checking")
@@ -32,7 +32,7 @@ for i in range (len(server_list)):
     parameters = {'name':server_list[i]}
     
     #r = requests.delete('http://main.alexandre-vogel.fr:3500/main/GameServer', json=parameters, headers=sys.argv[1])
-    r = requests.delete('http://localhost:3500/main/GameServer', json=parameters, headers=header)
+    r = requests.delete('https://main.aw.alexandre-vogel.fr/main/GameServer', json=parameters, headers=header)
 
     if (r.status_code == 200):
         print("Successfull deleting")
