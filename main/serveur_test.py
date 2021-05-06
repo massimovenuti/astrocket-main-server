@@ -81,7 +81,7 @@ def alive_checker(token_list,token,server_list):
     subprocess.call(['python3','life_check.py',token,str(len(token_list))]+token_list+server_list_tab)
 
 if __name__ == "__main__":
-    with open("{}/conf.json".format(os.path.dirname(__file__))) as conf_file:
+    with open(sys.argv[1]) as conf_file:
         conf = json.load(conf_file)
 
     print("Server running ...")
