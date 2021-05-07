@@ -4,7 +4,7 @@ info:
   description: API pour la gestion des actions liées à la gestion des Game Servers
   version: '1.0'
 servers:
-  - url: https://main.aw.alexandre-vogel.fr/
+  - url: https://main.aw.alexandre-vogel.fr/main/
 
 
 tags:
